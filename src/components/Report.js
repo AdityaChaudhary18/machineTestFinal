@@ -26,10 +26,13 @@ const Report = () => {
   const navigate = useNavigate();
 
   // Extracting data and metadata from location state
+  if (!location.state){
+    return <h1>No data found</h1>
+  }
   const data = location.state.res[0] || []; // Extracting report data
   const forestName = location.state.dateAndForestData[0]; // Extracting forest name
   const dateFilter = location.state.dateAndForestData[1]; // Extracting date filter
-
+  
   const calculateColumnTotal = (key) => {
     let total = 0;
     data.forEach((item) => {
