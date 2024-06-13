@@ -2,7 +2,6 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Redirect,
 } from "react-router-dom";
 import Home from "./components/Home";
 import Lander from "./components/Lander";

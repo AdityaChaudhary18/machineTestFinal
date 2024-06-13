@@ -173,8 +173,6 @@ def get_report():
             rowValue = report_data[item]
             if rowValue[15]!=0:
                 rowValue[13] = rowValue[13]/rowValue[15]
-        # if report_data[pic][15]!=0:
-        #     report_data[pic][13] = report_data[pic][13]/report_data[pic][15]
         
         # Process csv2Data
         if 'csv2Data' in document:

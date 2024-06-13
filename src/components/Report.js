@@ -2,13 +2,8 @@ import React from "react";
 import "./Report.css";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const today = new Date();
 
-const date = today.getDate();
-const month = today.getMonth() + 1;
-const year = today.getFullYear();
 
-const formattedDate = `${date}/${month}/${year}`;
 const keysList = [
   "PIC",
   "Ha_sum",

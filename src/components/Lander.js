@@ -8,7 +8,6 @@ const Lander = () => {
   const [selectedForest, setSelectedForest] = useState("");
   const [dates, setDates] = useState([]);
   const [selectedDate, setSelectedDate] = useState("");
-  const [reportData, setReportData] = useState("");
   const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
@@ -60,12 +59,9 @@ const Lander = () => {
       const response = await axios.get(
         `http://127.0.0.1:5000/getReport?forest=${selectedForest}&date=${selectedDate}`
       );
-      // console.log("HEllo", response.data);
       const res = Array(response.data);
       const dateAndForestData = [selectedForest, selectedDate];
 
-      setReportData(res);
-      // console.log("HI", reportData);
       navigate("/report", { state: { res, dateAndForestData } });
     } catch (error) {
       console.error("Error fetching report:", error);

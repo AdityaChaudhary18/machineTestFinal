@@ -23,7 +23,7 @@ const Home = () => {
   }, [name, csvFiles]);
 
   const handleNavigate = () => {
-    navigate("/lander");
+      navigate("/lander");
   };
 
   const handleFileChange = (event, csvKey) => {
@@ -41,7 +41,14 @@ const Home = () => {
     document.getElementById("csv3").value = "";
   };
   const handleSubmit = async (event) => {
+    setMessage("");
     event.preventDefault();
+    const allFieldsFilled =
+      name && csvFiles.csv1 && csvFiles.csv2 && csvFiles.csv3;
+    if (!allFieldsFilled){
+      setMessage("Don't try this! :)");
+      return
+    }
     const formData = new FormData();
     formData.append("name", name);
     formData.append("csv1", csvFiles.csv1);
@@ -63,7 +70,7 @@ const Home = () => {
       }
     } catch (error) {
       console.error("Error uploading data:", error);
-      setMessage(error);
+      setMessage(error.toString());
     }
   };
 
