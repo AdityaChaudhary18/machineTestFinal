@@ -42,8 +42,20 @@ const Lander = () => {
       const response = await axios.get(
         `http://127.0.0.1:5000/getDates?forest=${forest}`
       ); // API call to fetch dates for selected forest
-      setDates(response.data); // Update dates state with response data
-      if (response.data.length === 0) {
+      const formatDate = (dateStr) => {
+        const [day, month, year] = dateStr.split('-');
+        return `${year}-${month}-${day}`;
+      };
+      
+      // Sort dates in ascending order
+      const sortedDates = response.data.sort((a, b) => {
+        const dateA = new Date(formatDate(a));
+        const dateB = new Date(formatDate(b));
+        return dateA - dateB;
+      });
+      
+      setDates(sortedDates); // Update dates state with response data
+      if (sortedDates.length === 0) {
         setMessage(`No dates available for ${forest}`); // Display message if no dates found for selected forest
       }
     } catch (error) {
